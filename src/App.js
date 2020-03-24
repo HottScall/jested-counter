@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.State = {
+      count: 0
+    };
+  }
+
+  makeIncrumenter = amount => () =>
+    this.setState(prevState => ({ count: prevState.count + amount }));
+
+  increment = this.makeIncrumenter(1);
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button className="increment" onClick={this.increment}>
+          Increment Count
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
