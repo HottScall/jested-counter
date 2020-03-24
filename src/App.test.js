@@ -15,4 +15,12 @@ describe("App component", () => {
     const text = wrapper.find("p").text();
     expect(text).toEqual("Count: 0");
   });
+
+  it("the button increments the counter when clicked", () => {
+    const wrapper = shallow(<App />);
+    const incrementBtn = wrapper.find("button.increment");
+    incrementBtn.simulate("click");
+    const text = wrapper.find("p").text();
+    expect(text).toEqual("Count: 1");
+  });
 });
