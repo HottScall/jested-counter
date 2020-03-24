@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class App extends Component {
   constructor() {
     super();
-    this.State = {
+    this.state = {
       count: 0
     };
   }
