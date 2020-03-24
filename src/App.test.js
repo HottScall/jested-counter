@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { render } from "@testing-library/react";
 import App from "./App";
+import renderer from "react-test-renderer";
 
 // test("renders learn react link", () => {
 //   const { getByText } = render(<App />);
@@ -30,5 +31,10 @@ describe("App component", () => {
     decrementBtn.simulate("click");
     const text = wrapper.find("p").text();
     expect(text).toEqual("Count: -1");
+  });
+
+  it("matches the snapshot", () => {
+    const tree = renderer.create(<App />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
